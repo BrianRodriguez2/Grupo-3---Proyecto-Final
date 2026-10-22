@@ -34,7 +34,23 @@ describe('Casos de prueba de FRONT', () => {
 
     //Accion paso 3:
     cy.get('.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.mat-unthemed').contains('shopping_cart').click()
+    
+    //Acción paso 4:
+    cy.get('.mdc-button__label').contains('CheckOut').click()
 
+    //Acción Paso 5:
+    cy.get('input[formcontrolname="name"]').type('Brian Rodriguez')
+    cy.get('input[formcontrolname="addressLine1"]').type('Patagones')
+    cy.get('input[formcontrolname="addressLine2"]').type('2740')
+    cy.get('input[formcontrolname="pincode"]').type('124345')
+    cy.get('input[formcontrolname="state"]').type('CABA')
+
+    //Acción paso 6:
+    cy.get('.mdc-button__label').contains('Place Order').click()
+    cy.url().should('include', 'https://app.bookdb.online/myorders')
+
+    //Acción paso 7:
+    cy.get('.mat-mdc-row').contains('0').click().should('be.visible')
   })
 
   it.skip('Titulo caso de prueba 2 | Brian Rodriguez', () => {
